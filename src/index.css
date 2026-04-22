@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-cyan: #00f3ff;
+  --color-neon-magenta: #ff00ff;
+  --color-neon-lime: #39ff14;
+  --color-dark-bg: #050505;
+  --color-card-bg: #111111;
+  
+  --font-mono: "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-sans selection:bg-neon-magenta selection:text-white overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .neon-shadow-cyan {
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3), 0 0 20px rgba(0, 243, 255, 0.1);
+  }
+  .neon-shadow-magenta {
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.3), 0 0 20px rgba(255, 0, 255, 0.1);
+  }
+  .neon-shadow-lime {
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.3), 0 0 20px rgba(57, 255, 20, 0.1);
+  }
+  .neon-text-cyan {
+    text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+  }
+  .neon-text-magenta {
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+  }
+  .neon-border-cyan {
+    border-color: rgba(0, 243, 255, 0.5);
+  }
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 243, 255, 0.1);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
